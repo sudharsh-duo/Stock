@@ -1,0 +1,70 @@
+
+Version - 6.1.0.11
+
+// POST /duosoftware.stock.service/stock/updateInventory
+// GET /duosoftware.stock.service/stock/getAvailableStock/?itemID=123
+// GET /duosoftware.stock.service/stock/checkStockForQuotation/?guID=123JHJHUGYGUHJM
+// GET /duosoftware.stock.service/stock/getAvailableStockToIssue/?itemID=123
+
+// object
+  [
+    {
+      "_comment": "GRN (UpdateStockType - Add) ",
+      "itemID": "12345",
+      "itemCode": "itemCode1",
+      "qty": 1,
+      "guTranID": "123456",
+      "UpdateStockType": "Add"
+    },
+    {
+      "_comment": "AOD (UpdateStockType - Remove) ",
+      "itemID": "12345675",
+      "itemCode": "itemCode2",
+      "qty": 1,
+      "guTranID": "123456",
+      "UpdateStockType": "Remove"
+    }
+  ]
+  
+  =========================================================
+  
+  // update with transaction
+  [
+    {
+      "_comment": "GRN (UpdateStockType - Add) ",
+      "itemID": "12345",
+      "itemCode": "itemCode1",
+      "qty": 1,
+      "guTranID": "123456",
+      "UpdateStockType": "Add",
+      "isTransaction":true
+    },
+    {
+      "_comment": "AOD (UpdateStockType - Remove) ",
+      "itemID": "12345675",
+      "itemCode": "itemCode2",
+      "qty": 1,
+      "guTranID": "123456",
+      "UpdateStockType": "Remove",
+      "isTransaction":true
+    }
+  ]
+  
+  
+  Table script 
+  
+  CREATE TABLE `inventory` (
+  `guInvID` varchar(255) NOT NULL,
+  `tranDate` text,
+  `guTranID` text,
+  `createdDate` text,
+  `qty` double DEFAULT NULL,
+  `itemID` text,
+  `itemCode` text,
+  `createdUser` text,
+  PRIMARY KEY (`guInvID`)
+);
+
+
+Dependency API = >
+Not applicable 
